@@ -3,6 +3,7 @@ import { parseSubtitle } from "@/services/parser/parser";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { extractZip } from "@/services/upload/unzip";
+import { createChunks } from "@/services/chunking/chunker";
 
 export default function UploadDropzone() {
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
@@ -24,9 +25,10 @@ export default function UploadDropzone() {
         console.log("======================");
         console.log(file.name);
         const parsed = parseSubtitle(file.content);
+        const chunks = createChunks(parsed);
 
-console.log(file.name);
-console.log(parsed);
+    console.log("Subtitle Blocks:", parsed);
+    console.log("Chunks:", chunks);
       });
     } catch (error) {
       console.error(error);

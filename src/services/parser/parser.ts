@@ -1,6 +1,7 @@
 import { parseSync } from "subtitle";
+import { SubtitleBlock } from "@/types/subtitle";
 
-export function parseSubtitle(content: string) {
+export function parseSubtitle(content: string): SubtitleBlock[] {
   const nodes = parseSync(content);
 
   return nodes

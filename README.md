@@ -8,6 +8,8 @@
 
 LectureLens is an AI-powered Retrieval-Augmented Generation (RAG) application that lets students upload lecture subtitle files and chat with their course content in natural language. It grounds answers in the uploaded transcripts and provides timestamped source citations for easy verification.
 
+🌐 **Live demo:** [lecture-lens-zeta.vercel.app](https://lecture-lens-zeta.vercel.app/)
+
 ## ✨ Features
 
 - Upload ZIP archives containing `.vtt` and `.srt` subtitle files

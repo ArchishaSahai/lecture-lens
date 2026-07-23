@@ -3,20 +3,19 @@ import { embeddings } from "@/lib/openai";
 import { pineconeIndex } from "@/lib/pinecone";
 import { TranscriptChunk } from "@/types/chunk";
 
-export async function embedChunks(chunks: TranscriptChunk[]) {
+export async function embedChunks(
+  lectureName: string,
+  chunks: TranscriptChunk[]
+) {
   const documents = chunks.map((chunk) => ({
     pageContent: chunk.text,
     metadata: {
+      lectureName,
       startTimeMs: chunk.startTimeMs,
       endTimeMs: chunk.endTimeMs,
+      text: chunk.text,
     },
   }));
 
-  await PineconeStore.fromDocuments(
-    documents,
-    embeddings,
-    {
-      pineconeIndex,
-    }
-  );
+  await PineconeStore.fromDocuments(documents, embeddings, { pineconeIndex });
 }

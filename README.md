@@ -97,14 +97,6 @@ PINECONE_INDEX_NAME=your_pinecone_index_name
 | `PINECONE_API_KEY` | API key for your Pinecone project |
 | `PINECONE_INDEX_NAME` | Name of the Pinecone vector index |
 
-## 🖼️ Screenshots
-
-> Add application screenshots here.
-
-| Upload lectures | Chat with course content |
-| --- | --- |
-| `![Upload screen](./public/screenshots/upload.png)` | `![Chat screen](./public/screenshots/chat.png)` |
-
 ## 🔮 Future Improvements
 
 - PDF support

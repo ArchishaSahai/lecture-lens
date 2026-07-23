@@ -1,8 +1,10 @@
 "use client";
-import { parseSubtitle } from "@/services/parser/parser";
+
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import { embedChunks } from "@/services/embeddings/embedChunks";
 import { extractZip } from "@/services/upload/unzip";
+import { parseSubtitle } from "@/services/parser/parser";
 import { createChunks } from "@/services/chunking/chunker";
 
 export default function UploadDropzone() {
@@ -21,15 +23,16 @@ export default function UploadDropzone() {
 
       console.log("Subtitle Files:");
 
-      subtitleFiles.forEach((file) => {
+      for (const subtitleFile of subtitleFiles) {
         console.log("======================");
-        console.log(file.name);
-        const parsed = parseSubtitle(file.content);
+        console.log(subtitleFile.name);
+
+        const parsed = parseSubtitle(subtitleFile.content);
         const chunks = createChunks(parsed);
 
-    console.log("Subtitle Blocks:", parsed);
-    console.log("Chunks:", chunks);
-      });
+        console.log("Subtitle Blocks:", parsed);
+        console.log("Chunks:", chunks);
+      }
     } catch (error) {
       console.error(error);
     }
